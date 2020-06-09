@@ -26,7 +26,7 @@ router.get("/userProfile", (req, res) => {
 router.get("/allOrders", async (req, res) => {
   const docs = [];
   var findFamilies = function(db, callback) {
-    var cursor = db.collection("orders").find();
+    var cursor = db.collection("orders").find().sort({_id: -1 }).limit(3500);
     cursor.each(function(err, doc) {
       assert.equal(err, null);
       if (doc != null) {
